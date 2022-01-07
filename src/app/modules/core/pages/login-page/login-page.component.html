@@ -1,0 +1,34 @@
+<div class="login-page">
+  <mat-card class="login-form-card">
+    <mat-card-title>Login</mat-card-title>
+
+    <mat-card-content>
+      <ac-login-form
+        (valueChange)="handleLoginFormValueChange($event)"
+        (validityChange)="handleLoginFormValidityChange($event)"
+      >
+      </ac-login-form>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button
+        *ngIf="loginFormValid; else disabledSubmitButton"
+        mat-raised-button
+        color="primary"
+        (click)="handleSubmitClick()"
+      >
+        Submit
+      </button>
+
+      <ng-template #disabledSubmitButton>
+        <button
+          mat-raised-button
+          color="primary"
+          [disabled]="true"
+        >
+          Submit
+        </button>
+      </ng-template>
+    </mat-card-actions>
+  </mat-card>
+</div>
