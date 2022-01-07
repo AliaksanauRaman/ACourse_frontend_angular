@@ -1,0 +1,7 @@
+<div class="courses-index-page">
+  <ul class="courses-list">
+    <li class="courses-list__item" *ngFor="let course of courses$ | async">
+      {{ course.title }}
+    </li>
+  </ul>
+</div>
