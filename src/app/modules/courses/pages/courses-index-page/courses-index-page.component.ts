@@ -3,7 +3,7 @@ import { ICoursesIndexPageHttpService } from '../../interfaces/courses-index-pag
 import { COURSES_INDEX_PAGE_HTTP_SERVICE } from '../../tokens/courses-index-page-http-service.token';
 
 @Component({
-  selector: 'app-courses-index-page',
+  selector: 'ac-courses-index-page',
   templateUrl: './courses-index-page.component.html',
   styleUrls: ['./courses-index-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
