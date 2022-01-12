@@ -3,11 +3,7 @@ import { FormBuilder, Validators } from "@angular/forms";
 import { map, takeUntil, tap } from "rxjs";
 
 import { AutoDestroy } from "../../../../shared/classes/auto-destroy.class";
-
-export type LoginFormValue = Readonly<{
-  email: string;
-  password: string;
-}>;
+import { LoginFormValue } from "../../types/login-form-value.type";
 
 @Component({
   selector: 'ac-login-form',
