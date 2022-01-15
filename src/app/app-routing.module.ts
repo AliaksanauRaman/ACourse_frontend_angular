@@ -4,23 +4,32 @@ import { RouterModule, Routes } from '@angular/router';
 import { IsUserAuthenticatedGuard } from './modules/core/guards/is-user-authenticated.guard';
 import { IsUserNotAuthenticatedGuard } from './modules/core/guards/is-user-not-authenticated.guard';
 
+import { IndexPageComponent } from './modules/core/pages/index-page/index-page.component';
 import { LoginPageComponent } from './modules/core/pages/login-page/login-page.component';
 
-const appRoutes: Routes = [
+const appChildRoutes: Routes = [
   {
     path: '',
     pathMatch: 'full',
     redirectTo: '/courses',
   },
   {
-    path: 'login',
-    canActivate: [IsUserNotAuthenticatedGuard],
-    component: LoginPageComponent,
-  },
-  {
     path: 'courses',
     canActivate: [IsUserAuthenticatedGuard],
     loadChildren: () => import('./modules/courses/courses.module').then(m => m.CoursesModule),
+  },
+];
+
+const appRoutes: Routes = [
+  {
+    path: '',
+    component: IndexPageComponent,
+    children: appChildRoutes,
+  },
+  {
+    path: 'login',
+    canActivate: [IsUserNotAuthenticatedGuard],
+    component: LoginPageComponent,
   },
 ];
 
