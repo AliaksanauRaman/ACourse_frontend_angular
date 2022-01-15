@@ -1,6 +1,7 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { ReactiveFormsModule } from "@angular/forms";
+import { RouterModule } from "@angular/router";
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
@@ -18,6 +19,7 @@ import { SnackBarModule } from "../../shared/modules/snack-bar";
   imports: [
     CommonModule,
     ReactiveFormsModule,
+    RouterModule,
     SnackBarModule.forRoot(),
     MatInputModule,
     MatCardModule,
