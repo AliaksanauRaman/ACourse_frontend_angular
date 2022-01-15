@@ -1,5 +1,7 @@
 import { Injectable } from "@angular/core";
-import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot } from "@angular/router";
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from "@angular/router";
+
+import { SnackBarService } from "../../../shared/modules/snack-bar";
 
 import { AuthenticationService } from "../services/authentication.service";
 
@@ -9,9 +11,17 @@ import { AuthenticationService } from "../services/authentication.service";
 export class IsUserNotAuthenticatedGuard implements CanActivate {
   constructor(
     private readonly authenticationService: AuthenticationService,
+    private readonly snackBarService: SnackBarService,
+    private readonly router: Router,
   ) {}
 
   public async canActivate(_route: ActivatedRouteSnapshot, _state: RouterStateSnapshot): Promise<boolean> {
-    return !this.authenticationService.isUserLoggedIn();
+    if (this.authenticationService.isUserLoggedIn()) {
+      this.snackBarService.showInfo('You should log out first.');
+
+      return this.router.navigate(['/']).then(() => false);
+    }
+
+    return true;
   }
 }
