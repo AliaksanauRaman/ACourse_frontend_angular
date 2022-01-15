@@ -12,22 +12,35 @@
 
     <mat-card-actions>
       <button
-        *ngIf="loginFormValid; else disabledSubmitButton"
+        class="submit-button"
+        *ngIf="isLoginRequestInProgress; else readySubmitButton"
         mat-raised-button
         color="primary"
-        (click)="handleSubmitClick()"
       >
-        Submit
+        <mat-spinner diameter="26" color="accent"></mat-spinner>
       </button>
 
-      <ng-template #disabledSubmitButton>
+      <ng-template #readySubmitButton>
         <button
+          class="submit-button"
+          *ngIf="loginFormValid && !isSubmitButtonManuallyDisabled; else disabledSubmitButton"
           mat-raised-button
           color="primary"
-          [disabled]="true"
+          (click)="handleSubmitClick()"
         >
           Submit
         </button>
+
+        <ng-template #disabledSubmitButton>
+          <button
+            class="submit-button"
+            mat-raised-button
+            color="primary"
+            [disabled]="true"
+          >
+            Submit
+          </button>
+        </ng-template>
       </ng-template>
     </mat-card-actions>
   </mat-card>

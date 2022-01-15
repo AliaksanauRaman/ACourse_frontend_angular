@@ -1,10 +1,12 @@
-import { ChangeDetectionStrategy, Component } from "@angular/core";
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, HostListener, Output } from "@angular/core";
+import { HttpErrorResponse } from "@angular/common/http";
 import { catchError, of, tap } from "rxjs";
-import { LocalStorageKey, LocalStorageService } from "../../../../shared/services/local-storage.service";
 
 import { LoginFormValue } from "../../types/login-form-value.type";
+import { SuccessUserLoginResponse } from "../../types/success-user-login-response.type";
 
 import { AuthenticationService } from "../../services/authentication.service";
+import { SnackBarService } from "../../../../shared/modules/snack-bar";
 
 @Component({
   selector: 'ac-login-form-card',
@@ -13,18 +15,34 @@ import { AuthenticationService } from "../../services/authentication.service";
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoginFormCardComponent {
+  @HostListener('document:keyup.enter', ['$event'])
+  private handleDocumentKeyup(event: KeyboardEvent): void {
+    if (!this.loginFormValid) {
+      return;
+    }
+
+    this.handleSubmitClick();
+  }
+
+  @Output() readonly successLogin = new EventEmitter<SuccessUserLoginResponse>();
+
   public loginFormValue: LoginFormValue = {
     email: '',
     password: '',
   };
   public loginFormValid = false;
+  public isSubmitButtonManuallyDisabled = false;
+  public isLoginRequestInProgress = false;
 
   constructor(
     private readonly authenticationService: AuthenticationService,
-    private readonly localStorageService: LocalStorageService,
+    private readonly cdRef: ChangeDetectorRef,
+    private readonly snackBarService: SnackBarService,
   ) {}
 
   public handleLoginFormValueChange(value: LoginFormValue): void {
+    this.isSubmitButtonManuallyDisabled = false;
+
     this.loginFormValue = value;
   }
 
@@ -33,12 +51,26 @@ export class LoginFormCardComponent {
   }
 
   public handleSubmitClick(): void {
+    this.isLoginRequestInProgress = true;
+
     this.authenticationService
-      .loginUser(this.loginFormValue)
+      .makeHttpRequestToLoginUserByCredentials(this.loginFormValue)
       .pipe(
-        tap(({ accessToken }) => this.localStorageService.save(LocalStorageKey.ACCESS_TOKEN, accessToken)),
-        catchError(error => {
-          console.log({ error });
+        tap(loginUserResponse => {
+          this.isLoginRequestInProgress = false;
+          this.cdRef.markForCheck();
+          this.successLogin.emit(loginUserResponse);
+        }),
+        catchError((error: HttpErrorResponse) => {
+          if (error.status === 401) {
+            this.snackBarService.showError('Email or password is incorrect!');
+          } else {
+            this.snackBarService.showError('Unknown error occured!');
+          }
+
+          this.isSubmitButtonManuallyDisabled = true;
+          this.isLoginRequestInProgress = false;
+          this.cdRef.markForCheck();
           return of(error);
         }),
       )
