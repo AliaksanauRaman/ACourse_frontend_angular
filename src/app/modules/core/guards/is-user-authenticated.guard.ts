@@ -5,7 +5,9 @@ import { SnackBarService } from "../../../shared/modules/snack-bar";
 
 import { AuthenticationService } from "../services/authentication.service";
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class IsUserAuthenticatedGuard implements CanActivate {
   constructor(
     private readonly authenticationService: AuthenticationService,

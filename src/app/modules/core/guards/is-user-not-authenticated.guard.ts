@@ -3,7 +3,9 @@ import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot } from "@angul
 
 import { AuthenticationService } from "../services/authentication.service";
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class IsUserNotAuthenticatedGuard implements CanActivate {
   constructor(
     private readonly authenticationService: AuthenticationService,
