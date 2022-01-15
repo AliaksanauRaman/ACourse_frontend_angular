@@ -8,6 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { IndexPageComponent } from "./pages/index-page/index-page.component";
+import { NavBarComponent } from "./components/nav-bar/nav-bar.component";
 import { LoginPageComponent } from "./pages/login-page/login-page.component";
 import { LoginFormComponent } from "./components/login-form/login-form.component";
 import { LoginFormCardComponent } from "./components/login-form-card/login-form-card.component";
@@ -28,6 +29,7 @@ import { SnackBarModule } from "../../shared/modules/snack-bar";
   ],
   declarations: [
     IndexPageComponent,
+    NavBarComponent,
     LoginPageComponent,
     LoginFormComponent,
     LoginFormCardComponent,
