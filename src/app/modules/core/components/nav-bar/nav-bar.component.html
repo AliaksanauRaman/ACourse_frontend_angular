@@ -1,0 +1,10 @@
+<div class="nav-bar">
+  <div
+    class="link"
+    *ngFor="let link of navBarLinkList"
+    [routerLink]="link.path"
+    routerLinkActive="active"
+  >
+    <span>{{ link.text }}</span>
+  </div>
+</div>

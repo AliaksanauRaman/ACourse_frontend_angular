@@ -1,0 +1,14 @@
+:host {
+  display: block;
+}
+
+.nav-bar {
+  display: flex;
+  flex-direction: column;
+}
+
+.link {
+  display: flex;
+  flex-shrink: 0;
+  height: 40px;
+}
