@@ -2,7 +2,7 @@ import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/c
 import { Inject, Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 
-import { API_URL } from "../../../tokens/api-url.token";
+import { API_URL } from "../../../shared/injection-tokens/api-url";
 
 import { LocalStorageService, LocalStorageKey } from "../../../shared/services/local-storage.service";
 
