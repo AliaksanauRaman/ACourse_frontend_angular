@@ -1,4 +1,6 @@
-@import './normalize.scss';
+@import './styles/libs/normalize.scss';
+
+@import './styles/colors.scss';
 
 body {
   position: relative;
@@ -6,4 +8,8 @@ body {
   flex-direction: column;
   width: 100vw;
   height: 100vh;
+}
+
+* {
+  box-sizing: border-box;
 }
