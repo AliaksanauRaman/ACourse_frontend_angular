@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { IsUserAuthenticatedGuard } from './modules/core/guards/is-user-authenticated.guard';
 import { IsUserNotAuthenticatedGuard } from './modules/core/guards/is-user-not-authenticated.guard';
 
-import { IndexPageComponent } from './modules/core/pages/index-page/index-page.component';
+import { LayoutPageComponent } from './modules/core/pages/layout-page/layout-page.component';
 import { LoginPageComponent } from './modules/core/pages/login-page/login-page.component';
 
 const appChildRoutes: Routes = [
@@ -27,7 +27,7 @@ const appChildRoutes: Routes = [
 const appRoutes: Routes = [
   {
     path: '',
-    component: IndexPageComponent,
+    component: LayoutPageComponent,
     children: appChildRoutes,
   },
   {

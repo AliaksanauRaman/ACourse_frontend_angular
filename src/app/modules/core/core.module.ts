@@ -7,7 +7,6 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
-import { IndexPageComponent } from "./pages/index-page/index-page.component";
 import { NavBarComponent } from "./components/nav-bar/nav-bar.component";
 import { LoginPageComponent } from "./pages/login-page/login-page.component";
 import { LoginFormComponent } from "./components/login-form/login-form.component";
@@ -15,6 +14,7 @@ import { LoginFormCardComponent } from "./components/login-form-card/login-form-
 import { AuthenticationService } from "./services/authentication.service";
 
 import { SnackBarModule } from "../../shared/modules/snack-bar";
+import { LayoutPageComponent } from "./pages/layout-page/layout-page.component";
 
 @NgModule({
   imports: [
@@ -28,14 +28,14 @@ import { SnackBarModule } from "../../shared/modules/snack-bar";
     MatProgressSpinnerModule,
   ],
   declarations: [
-    IndexPageComponent,
+    LayoutPageComponent,
     NavBarComponent,
     LoginPageComponent,
     LoginFormComponent,
     LoginFormCardComponent,
   ],
   exports: [
-    IndexPageComponent,
+    LayoutPageComponent,
     LoginPageComponent,
   ],
   providers: [AuthenticationService],
