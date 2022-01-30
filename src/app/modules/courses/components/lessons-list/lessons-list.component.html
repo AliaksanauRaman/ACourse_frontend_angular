@@ -1,11 +1,25 @@
-<div class="lessons-list">
-  <ul *ngIf="lessonsPreviews.length > 0; else noLessonsView">
-    <li *ngFor="let lesson of lessonsPreviews">
-      <span>{{ lesson.title }}</span>
-    </li>
-  </ul>
+<mat-list class="lessons-list">
+  <ng-container *ngIf="lessonsPreviews.length > 0; else emptyListView">
+    <mat-list-item class="list-item" *ngFor="let lesson of lessonsPreviews">
+      <mat-icon class="list-item__icon">school</mat-icon>
 
-  <ng-template #noLessonsView>
-    <span>No lessons.</span>
-  </ng-template>
-</div>
+      <span class="list-item__title">{{ lesson.title }}</span>
+
+      <div class="list-item__actions">
+        <button mat-icon-button>
+          <mat-icon>edit</mat-icon>
+        </button>
+
+        <button mat-icon-button>
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </mat-list-item>
+  </ng-container>
+</mat-list>
+
+<ng-template #emptyListView>
+  <mat-list-item>
+    <span>Empty.</span>
+  </mat-list-item>
+</ng-template>

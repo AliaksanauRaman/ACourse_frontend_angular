@@ -1,3 +1,27 @@
 :host {
   display: block;
 }
+
+.list-item {
+  cursor: pointer;
+  display: flex;
+  border-radius: 4px;
+  transition: .25s all ease-in-out;
+
+  &:hover {
+    background-color: var(--light-grey);
+  }
+}
+
+.list-item__icon {
+  flex-shrink: 0;
+  margin-right: 10px;
+}
+
+.list-item__title {
+  flex-grow: 1;
+}
+
+.list-item__actions {
+  flex-shrink: 0;
+}
