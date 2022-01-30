@@ -1,1 +1,9 @@
-<div>course page!</div>
+<div class="course-page">
+  <ng-container *ngIf="courseWithLessonsPreviews$ | async as course; else courseNotFoundErrorView">
+    <h1>{{ course.title }}</h1>
+  </ng-container>
+
+  <ng-template #courseNotFoundErrorView>
+    <b>Course not found!</b>
+  </ng-template>
+</div>

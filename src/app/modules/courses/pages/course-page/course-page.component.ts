@@ -1,4 +1,10 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { COURSE_PAGE_HTTP_SERVICE, ICoursePageHttpService } from '../../interfaces/course-page-http-service.interface';
+
+type UrlParams = Readonly<{
+  courseId: string;
+}>;
 
 @Component({
   selector: 'ac-course-page',
@@ -6,8 +12,25 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   styleUrls: ['./course-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CoursePageComponent implements OnInit {
-  constructor() { }
+export class CoursePageComponent {
+  readonly courseWithLessonsPreviews$ = this.coursePageHttpService
+    .getCourseWithLessonsPreviewsById(
+      this.getUrlParams().courseId,
+    );
 
-  ngOnInit() { }
+  constructor(
+    @Inject(COURSE_PAGE_HTTP_SERVICE)
+    private readonly coursePageHttpService: ICoursePageHttpService,
+    private readonly activatedRoute: ActivatedRoute,
+  ) { }
+
+  private getUrlParams(): UrlParams {
+    const activatedRouteUrlParams = this.activatedRoute.snapshot.params;
+
+    if (typeof activatedRouteUrlParams['courseId'] !== 'string') {
+      throw new Error("'courseId' url parameter is missing!");
+    }
+
+    return activatedRouteUrlParams as UrlParams;
+  }
 }
