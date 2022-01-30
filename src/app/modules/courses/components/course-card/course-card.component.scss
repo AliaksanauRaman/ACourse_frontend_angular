@@ -1,3 +1,26 @@
 :host {
   display: block;
 }
+
+.course-card {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  min-height: 180px;
+}
+
+.title {
+  flex-shrink: 0;
+}
+
+.subtitle {
+  flex-shrink: 0;
+}
+
+.content {
+  flex-grow: 1;
+}
+
+.actions {
+  flex-shrink: 0;
+}

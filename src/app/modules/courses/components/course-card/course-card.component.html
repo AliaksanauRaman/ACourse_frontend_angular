@@ -1,26 +1,24 @@
-<div class="course-card">
-  <mat-card>
-    <mat-card-title>
-      <span>{{ course.title }}</span>
-    </mat-card-title>
+<mat-card class="course-card">
+  <mat-card-title class="title">
+    <span>{{ course.title }}</span>
+  </mat-card-title>
 
-    <mat-card-subtitle>
-      <span>Created: </span>
-      <span> {{ course.createdAt | date }}</span>
-    </mat-card-subtitle>
+  <mat-card-subtitle class="subtitle">
+    <span>Created: </span>
+    <span> {{ course.createdAt | date }}</span>
+  </mat-card-subtitle>
 
-    <mat-card-content>
-      <span>{{ course.description }}</span>
-    </mat-card-content>
+  <mat-card-content class="content">
+    <span>{{ course.description }}</span>
+  </mat-card-content>
 
-    <mat-card-actions align="end">
-      <a
-        mat-button
-        color="primary"
-        [routerLink]="['/courses', course.id]"
-      >
-        Open
-      </a>
-    </mat-card-actions>
-  </mat-card>
-</div>
+  <mat-card-actions class="actions" align="end">
+    <a
+      mat-button
+      color="primary"
+      [routerLink]="['/courses', course.id]"
+    >
+      Open
+    </a>
+  </mat-card-actions>
+</mat-card>
