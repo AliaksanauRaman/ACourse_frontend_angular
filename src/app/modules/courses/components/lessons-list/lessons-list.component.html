@@ -1,7 +1,11 @@
 <div class="lessons-list">
-  <ul>
+  <ul *ngIf="lessonsPreviews.length > 0; else noLessonsView">
     <li *ngFor="let lesson of lessonsPreviews">
       <span>{{ lesson.title }}</span>
     </li>
   </ul>
+
+  <ng-template #noLessonsView>
+    <span>No lessons.</span>
+  </ng-template>
 </div>
