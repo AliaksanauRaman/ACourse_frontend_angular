@@ -24,12 +24,12 @@
   min-height: 180px;
   color: var(--primary);
   transition: .25s all ease-in-out;
-}
 
-.add-a-course-button:hover {
-  background-color: var(--primary);
-  color: var(--accent);
-  transform: scale(1.05);
+  &:hover {
+    background-color: var(--primary);
+    color: var(--accent);
+    transform: scale(1.05);
+  }
 }
 
 .add-a-course-button__content {
