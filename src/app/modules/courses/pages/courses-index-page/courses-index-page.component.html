@@ -1,5 +1,5 @@
 <div class="courses-index-page">
-  <div class="courses-list">
-    <ac-course-card *ngFor="let course of courses$ | async" [course]="course"></ac-course-card>
-  </div>
+  <ng-container *ngIf="(courses$ | async) as coursesList">
+    <ac-courses-board [coursesList]="coursesList"></ac-courses-board>
+  </ng-container>
 </div>
