@@ -1,3 +1,5 @@
 <div class="courses-board">
-
+  <div class="board-cell" *ngFor="let course of coursesList">
+    <ac-course-card [course]="course"></ac-course-card>
+  </div>
 </div>
