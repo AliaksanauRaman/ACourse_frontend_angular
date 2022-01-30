@@ -4,12 +4,17 @@
       <span>{{ course.title }}</span>
     </mat-card-title>
 
+    <mat-card-subtitle>
+      <span>Created: </span>
+      <span> {{ course.createdAt | date }}</span>
+    </mat-card-subtitle>
+
     <mat-card-content>
       <span>{{ course.description }}</span>
     </mat-card-content>
 
-    <mat-card-footer>
-      <button>Open</button>
-    </mat-card-footer>
+    <mat-card-actions align="end">
+      <button mat-button color="primary">Open</button>
+    </mat-card-actions>
   </mat-card>
 </div>
