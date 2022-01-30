@@ -11,11 +11,13 @@ import { CourseCardComponent } from './components/course-card/course-card.compon
 import { CoursesBoardComponent } from './components/courses-board/courses-board.component';
 import { CoursePageComponent } from './pages/course-page/course-page.component';
 import { COURSE_PAGE_HTTP_SERVICE } from './interfaces/course-page-http-service.interface';
+import { LessonsListComponent } from './components/lessons-list/lessons-list.component';
 
 @NgModule({
   declarations: [
     CourseCardComponent,
     CoursesBoardComponent,
+    LessonsListComponent,
     CoursesIndexPageComponent,
     CoursePageComponent,
   ],
