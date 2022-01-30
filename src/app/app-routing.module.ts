@@ -18,6 +18,10 @@ const appChildRoutes: Routes = [
     canActivate: [IsUserAuthenticatedGuard],
     loadChildren: () => import('./modules/courses/courses.module').then(m => m.CoursesModule),
   },
+  {
+    path: 'settings',
+    loadChildren: () => import('./modules/settings/settings.module').then(m => m.SettingsModule),
+  }
 ];
 
 const appRoutes: Routes = [
