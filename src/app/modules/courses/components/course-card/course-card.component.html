@@ -14,7 +14,13 @@
     </mat-card-content>
 
     <mat-card-actions align="end">
-      <button mat-button color="primary">Open</button>
+      <a
+        mat-button
+        color="primary"
+        [routerLink]="['/courses', course.id]"
+      >
+        Open
+      </a>
     </mat-card-actions>
   </mat-card>
 </div>
