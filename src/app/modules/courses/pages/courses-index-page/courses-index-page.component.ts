@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
-import { ICoursesIndexPageHttpService } from '../../interfaces/courses-index-page-http-service.interface';
-import { COURSES_INDEX_PAGE_HTTP_SERVICE } from '../../tokens/courses-index-page-http-service.token';
+import { ICoursesIndexPageHttpService, COURSES_INDEX_PAGE_HTTP_SERVICE } from '../../interfaces/courses-index-page-http-service.interface';
 
 @Component({
   selector: 'ac-courses-index-page',
