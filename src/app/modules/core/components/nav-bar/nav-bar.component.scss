@@ -8,7 +8,15 @@
 }
 
 .link {
+  cursor: pointer;
   display: flex;
+  align-items: center;
   flex-shrink: 0;
   height: 40px;
+  padding: 0 15px;
+
+  &.active {
+    color: var(--white);
+    background-color: var(--primary);
+  }
 }
