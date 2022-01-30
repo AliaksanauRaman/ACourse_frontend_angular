@@ -9,12 +9,14 @@ import { CoursesHttpService } from './services/courses-http.service';
 import { COURSES_INDEX_PAGE_HTTP_SERVICE } from './tokens/courses-index-page-http-service.token';
 import { CourseCardComponent } from './components/course-card/course-card.component';
 import { CoursesBoardComponent } from './components/courses-board/courses-board.component';
+import { CoursePageComponent } from './pages/course-page/course-page.component';
 
 @NgModule({
   declarations: [
     CourseCardComponent,
     CoursesBoardComponent,
     CoursesIndexPageComponent,
+    CoursePageComponent,
   ],
   imports: [
     CommonModule,
