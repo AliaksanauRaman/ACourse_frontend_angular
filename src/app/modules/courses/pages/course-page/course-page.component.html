@@ -1,11 +1,15 @@
 <div class="course-page">
   <ng-container *ngIf="courseWithLessonsPreviews$ | async as course; else courseNotFoundErrorView">
     <h1>{{ course.title }}</h1>
+
     <div>{{ course.createdAt | date }}</div>
 
     <p>{{ course.description }}</p>
 
-    <ac-lessons-list [lessonsPreviews]="course.lessonsPreviews"></ac-lessons-list>
+    <div class="course-lessons">
+      <h3>Lessons:</h3>
+      <ac-lessons-list [lessonsPreviews]="course.lessonsPreviews"></ac-lessons-list>
+    </div>
   </ng-container>
 
   <ng-template #courseNotFoundErrorView>
