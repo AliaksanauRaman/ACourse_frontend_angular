@@ -10,6 +10,7 @@ import { COURSES_INDEX_PAGE_HTTP_SERVICE } from './interfaces/courses-index-page
 import { CourseCardComponent } from './components/course-card/course-card.component';
 import { CoursesBoardComponent } from './components/courses-board/courses-board.component';
 import { CoursePageComponent } from './pages/course-page/course-page.component';
+import { COURSE_PAGE_HTTP_SERVICE } from './interfaces/course-page-http-service.interface';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,10 @@ import { CoursePageComponent } from './pages/course-page/course-page.component';
       provide: COURSES_INDEX_PAGE_HTTP_SERVICE,
       useExisting: CoursesHttpService,
     },
+    {
+      provide: COURSE_PAGE_HTTP_SERVICE,
+      useExisting: CoursesHttpService,
+    }
   ],
 })
 export class CoursesModule { }
