@@ -2,4 +2,13 @@
   <div class="board-cell" *ngFor="let course of coursesList">
     <ac-course-card [course]="course"></ac-course-card>
   </div>
+
+  <div class="board-cell">
+    <mat-card class="add-a-course-button">
+      <mat-card-content class="add-a-course-button__content">
+        <span class="add-a-course-button__content-text">Add a course</span>
+        <mat-icon class="add-a-course-button__content-icon">add</mat-icon>
+      </mat-card-content>
+    </mat-card>
+  </div>
 </div>
