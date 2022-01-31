@@ -1,7 +1,9 @@
 <mat-list class="lessons-list">
   <ng-container *ngIf="lessonsPreviews.length > 0; else emptyListView">
-    <mat-list-item class="list-item" *ngFor="let lesson of lessonsPreviews">
+    <mat-list-item class="list-item" *ngFor="let lesson of lessonsPreviews; let lessonIndex = index">
       <mat-icon class="list-item__icon">school</mat-icon>
+
+      <div class="list-item__number">{{ lessonIndex + 1 }}.</div>
 
       <span class="list-item__title">{{ lesson.title }}</span>
 
