@@ -3,6 +3,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
+import { MatDialogModule } from "@angular/material/dialog";
 import { CommonModule } from '@angular/common';
 
 import { CoursesRoutingModule } from './courses-routing.module';
@@ -29,6 +30,7 @@ import { LessonsListComponent } from './components/lessons-list/lessons-list.com
     MatButtonModule,
     MatIconModule,
     MatListModule,
+    MatDialogModule,
     CoursesRoutingModule,
   ],
   providers: [
