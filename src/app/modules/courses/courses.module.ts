@@ -15,6 +15,8 @@ import { CoursesBoardComponent } from './components/courses-board/courses-board.
 import { CoursePageComponent } from './pages/course-page/course-page.component';
 import { COURSE_PAGE_HTTP_SERVICE } from './interfaces/course-page-http-service.interface';
 import { LessonsListComponent } from './components/lessons-list/lessons-list.component';
+import { CoursesService } from './services/courses.service';
+import { COURSES_SERVICE } from './interfaces/courses-service.interface';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,12 @@ import { LessonsListComponent } from './components/lessons-list/lessons-list.com
     {
       provide: COURSE_PAGE_HTTP_SERVICE,
       useExisting: CoursesHttpService,
-    }
+    },
+    CoursesService,
+    {
+      provide: COURSES_SERVICE,
+      useExisting: CoursesService,
+    },
   ],
 })
 export class CoursesModule { }
