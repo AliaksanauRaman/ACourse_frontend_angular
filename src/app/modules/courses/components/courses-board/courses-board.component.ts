@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, Input } from '@angular/core';
 
+import { COURSES_SERVICE, ICoursesService } from '../../interfaces/courses-service.interface';
 import { Course } from '../../types/course.type';
 
 @Component({
@@ -8,11 +9,16 @@ import { Course } from '../../types/course.type';
   styleUrls: ['./courses-board.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CoursesBoardComponent implements OnInit {
+export class CoursesBoardComponent {
   @Input()
   public coursesList: Array<Course> = [];
 
-  constructor() { }
+  constructor(
+    @Inject(COURSES_SERVICE)
+    private readonly coursesService: ICoursesService,
+  ) { }
 
-  ngOnInit() { }
+  public openAddCourseDialog(): void {
+    this.coursesService.openAddCourseDialog();
+  }
 }
