@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { API_URL } from "./shared/injection-tokens/api-url";
+import { environment } from "../environments/environment";
 
 @NgModule({
   declarations: [
@@ -25,7 +26,7 @@ import { API_URL } from "./shared/injection-tokens/api-url";
   providers: [
     {
       provide: API_URL,
-      useValue: 'https://acourse-backend.herokuapp.com'
+      useValue: environment.apiUrl,
     },
     {
       provide: HTTP_INTERCEPTORS,
