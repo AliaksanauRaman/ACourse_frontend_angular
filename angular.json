@@ -8,7 +8,8 @@
     }
   },
   "cli": {
-    "analytics": "167b7ff5-7115-4d8b-b322-91b7d25d1a8c"
+    "analytics": "167b7ff5-7115-4d8b-b322-91b7d25d1a8c",
+    "defaultCollection": "@angular-eslint/schematics"
   },
   "version": 1,
   "newProjectRoot": "projects",
@@ -120,6 +121,15 @@
               "src/styles.scss"
             ],
             "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
           }
         }
       }
