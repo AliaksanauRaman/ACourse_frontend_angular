@@ -1,10 +1,10 @@
-import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
-import { Inject, Injectable } from "@angular/core";
-import { Observable } from "rxjs";
+import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
+import { Inject, Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
-import { API_URL } from "../../../shared/injection-tokens/api-url";
+import { API_URL } from '../../../shared/injection-tokens/api-url';
 
-import { LocalStorageService, LocalStorageKey } from "../../../shared/services/local-storage.service";
+import { LocalStorageService, LocalStorageKey } from '../../../shared/services/local-storage.service';
 
 @Injectable()
 export class HttpRequestsInterceptor implements HttpInterceptor {
@@ -13,7 +13,7 @@ export class HttpRequestsInterceptor implements HttpInterceptor {
     private readonly localStorageService: LocalStorageService,
   ) {}
 
-  public intercept(
+  intercept(
     httpRequest: HttpRequest<unknown>,
     next: HttpHandler,
   ): Observable<HttpEvent<unknown>> {

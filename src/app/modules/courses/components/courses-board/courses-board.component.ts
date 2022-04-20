@@ -11,14 +11,14 @@ import { Course } from '../../types/course.type';
 })
 export class CoursesBoardComponent {
   @Input()
-  public coursesList: Array<Course> = [];
+  coursesList: Array<Course> = [];
 
   constructor(
     @Inject(COURSES_SERVICE)
     private readonly coursesService: ICoursesService,
   ) { }
 
-  public openAddCourseDialog(): void {
+  openAddCourseDialog(): void {
     this.coursesService.openAddCourseDialog();
   }
 }

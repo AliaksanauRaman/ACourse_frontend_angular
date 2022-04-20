@@ -10,5 +10,5 @@ import { LessonPreview } from '../../types/lesson-preview.type';
 })
 export class LessonsListComponent {
   @Input()
-  public lessonsPreviews: Array<LessonPreview> = [];
+  lessonsPreviews: Array<LessonPreview> = [];
 }

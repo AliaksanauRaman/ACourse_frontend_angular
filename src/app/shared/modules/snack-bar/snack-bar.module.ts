@@ -1,11 +1,11 @@
-import { ModuleWithProviders, NgModule } from "@angular/core";
+import { ModuleWithProviders, NgModule } from '@angular/core';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatButtonModule } from '@angular/material/button';
 
-import { ErrorSnackBarComponent } from "./components/error-snack-bar/error-snack-bar.component";
-import { InfoSnackBarComponent } from "./components/info-snack-bar/info-snack-bar.component";
+import { ErrorSnackBarComponent } from './components/error-snack-bar/error-snack-bar.component';
+import { InfoSnackBarComponent } from './components/info-snack-bar/info-snack-bar.component';
 
-import { SnackBarService } from "./services/snack-bar.service";
+import { SnackBarService } from './services/snack-bar.service';
 
 @NgModule({
   imports: [MatSnackBarModule, MatButtonModule],

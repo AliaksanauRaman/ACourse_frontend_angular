@@ -6,11 +6,11 @@ import { CoursePageComponent } from './pages/course-page/course-page.component';
 
 const coursesRoutes: Routes = [
   { path: '', component: CoursesIndexPageComponent },
-  { path: ':courseId', component: CoursePageComponent }
+  { path: ':courseId', component: CoursePageComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(coursesRoutes)],
   exports: [RouterModule],
 })
-export class CoursesRoutingModule { }
+export class CoursesRoutingModule {}

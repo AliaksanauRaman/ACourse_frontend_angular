@@ -1,12 +1,12 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, HostListener, Output } from "@angular/core";
-import { HttpErrorResponse } from "@angular/common/http";
-import { catchError, of, tap } from "rxjs";
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, HostListener, Output } from '@angular/core';
+import { HttpErrorResponse, HttpStatusCode } from '@angular/common/http';
+import { catchError, of, tap } from 'rxjs';
 
-import { LoginFormValue } from "../../types/login-form-value.type";
-import { SuccessUserLoginResponse } from "../../types/success-user-login-response.type";
+import { LoginFormValue } from '../../types/login-form-value.type';
+import { SuccessUserLoginResponse } from '../../types/success-user-login-response.type';
 
-import { AuthenticationService } from "../../services/authentication.service";
-import { SnackBarService } from "../../../../shared/modules/snack-bar";
+import { AuthenticationService } from '../../services/authentication.service';
+import { SnackBarService } from '../../../../shared/modules/snack-bar';
 
 @Component({
   selector: 'ac-login-form-card',
@@ -15,24 +15,15 @@ import { SnackBarService } from "../../../../shared/modules/snack-bar";
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoginFormCardComponent {
-  @HostListener('document:keyup.enter', ['$event'])
-  private handleDocumentKeyup(event: KeyboardEvent): void {
-    if (!this.loginFormValid) {
-      return;
-    }
-
-    this.handleSubmitClick();
-  }
-
   @Output() readonly successLogin = new EventEmitter<SuccessUserLoginResponse>();
 
-  public loginFormValue: LoginFormValue = {
+  loginFormValue: LoginFormValue = {
     email: '',
     password: '',
   };
-  public loginFormValid = false;
-  public isSubmitButtonManuallyDisabled = false;
-  public isLoginRequestInProgress = false;
+  loginFormValid = false;
+  isSubmitButtonManuallyDisabled = false;
+  isLoginRequestInProgress = false;
 
   constructor(
     private readonly authenticationService: AuthenticationService,
@@ -40,17 +31,26 @@ export class LoginFormCardComponent {
     private readonly snackBarService: SnackBarService,
   ) {}
 
-  public handleLoginFormValueChange(value: LoginFormValue): void {
+  @HostListener('document:keyup.enter', ['$event'])
+  handleDocumentKeyup(_event: KeyboardEvent): void {
+    if (!this.loginFormValid) {
+      return;
+    }
+
+    this.handleSubmitClick();
+  }
+
+  handleLoginFormValueChange(value: LoginFormValue): void {
     this.isSubmitButtonManuallyDisabled = false;
 
     this.loginFormValue = value;
   }
 
-  public handleLoginFormValidityChange(valid: boolean): void {
+  handleLoginFormValidityChange(valid: boolean): void {
     this.loginFormValid = valid;
   }
 
-  public handleSubmitClick(): void {
+  handleSubmitClick(): void {
     this.isLoginRequestInProgress = true;
 
     this.authenticationService
@@ -62,10 +62,10 @@ export class LoginFormCardComponent {
           this.successLogin.emit(loginUserResponse);
         }),
         catchError((error: HttpErrorResponse) => {
-          if (error.status === 401) {
+          if (error.status === HttpStatusCode.Unauthorized) {
             this.snackBarService.showError('Email or password is incorrect!');
           } else {
-            this.snackBarService.showError('Unknown error occured!');
+            this.snackBarService.showError('Unknown error ocurred!');
           }
 
           this.isSubmitButtonManuallyDisabled = true;

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'ac-settings-index-page',
@@ -6,8 +6,5 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   styleUrls: ['./settings-index-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SettingsIndexPageComponent implements OnInit {
-  constructor() { }
-
-  ngOnInit() { }
+export class SettingsIndexPageComponent {
 }

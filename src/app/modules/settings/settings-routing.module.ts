@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { SettingsIndexPageComponent } from './pages/settings-index-page/settings-index-page.component';
 
 const settingsRoutes: Routes = [
-  { path: '', component: SettingsIndexPageComponent, }
+  { path: '', component: SettingsIndexPageComponent },
 ];
 
 @NgModule({

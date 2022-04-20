@@ -1,6 +1,6 @@
-import { AcEnvironment } from "../app/shared/types/environment.type";
+import { AcEnvironment } from '../app/shared/types/environment.type';
 
 export const environment: AcEnvironment = {
   production: false,
-  apiUrl: "http://localhost:3333",
+  apiUrl: 'http://localhost:3333',
 };

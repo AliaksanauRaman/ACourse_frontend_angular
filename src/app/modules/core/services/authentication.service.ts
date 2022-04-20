@@ -1,15 +1,17 @@
-import { Inject, Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { Observable } from "rxjs";
-import jwtDecode from "jwt-decode";
+import { Inject, Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import jwtDecode from 'jwt-decode';
 
-import { UserCredentials } from "../types/user-credentials.type";
-import { SuccessUserLoginResponse } from "../types/success-user-login-response.type";
-import { isDecodedJwtToken } from "../types/decoded-jwt-token.type";
+import { UserCredentials } from '../types/user-credentials.type';
+import { SuccessUserLoginResponse } from '../types/success-user-login-response.type';
+import { isDecodedJwtToken } from '../types/decoded-jwt-token.type';
 
-import { API_URL } from "../../../shared/injection-tokens/api-url";
-import { LocalStorageService, LocalStorageKey } from "../../../shared/services/local-storage.service";
-import { JSON_HTTP_HEADERS } from "../../../shared/constants/json-http-headers";
+import { API_URL } from '../../../shared/injection-tokens/api-url';
+import { LocalStorageService, LocalStorageKey } from '../../../shared/services/local-storage.service';
+import { JSON_HTTP_HEADERS } from '../../../shared/constants/json-http-headers';
+
+const MILLISECOND_IN_SECOND = 1000;
 
 @Injectable()
 export class AuthenticationService {
@@ -20,7 +22,7 @@ export class AuthenticationService {
     private readonly localStorageService: LocalStorageService,
   ) {}
 
-  public makeHttpRequestToLoginUserByCredentials(
+  makeHttpRequestToLoginUserByCredentials(
     userCredentials: UserCredentials,
   ): Observable<SuccessUserLoginResponse> {
     return this.httpClient.post<SuccessUserLoginResponse>(
@@ -32,7 +34,7 @@ export class AuthenticationService {
     );
   }
 
-  public isUserLoggedIn(): boolean {
+  isUserLoggedIn(): boolean {
     const jwtToken = this.getJwtTokenOfCurrentUserOrNull();
 
     if (jwtToken === null) {
@@ -55,6 +57,6 @@ export class AuthenticationService {
       return false;
     }
 
-    return (decodedJwtToken.exp * 1000) >= new Date().getTime();
+    return (decodedJwtToken.exp * MILLISECOND_IN_SECOND) >= new Date().getTime();
   }
 }

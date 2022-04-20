@@ -8,8 +8,10 @@ const DEFAULT_COLOR = 'grey';
 })
 export class TextColorDirective {
   @Input('acTextColor')
-  public set color(value: string | undefined) {
-    this.elementRef.nativeElement.style.color = value || DEFAULT_COLOR;
+  set color(value: string | undefined) {
+    this.elementRef.nativeElement.style.color = value === undefined || value === ''
+      ? DEFAULT_COLOR
+      : value;
   }
 
   constructor(

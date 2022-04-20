@@ -1,4 +1,4 @@
-import { LessonType } from "../constants/lesson-type";
+import { LessonType } from '../constants/lesson-type';
 
 export type LessonPreview = Readonly<{
   id: string;
