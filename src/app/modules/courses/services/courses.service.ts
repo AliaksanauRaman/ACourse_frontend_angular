@@ -1,8 +1,8 @@
-import { Injectable } from "@angular/core";
-import { MatDialog } from "@angular/material/dialog";
+import { Injectable } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 
-import { AddCourseDialogComponent } from "../components/add-course-dialog/add-course-dialog.component";
-import { ICoursesService } from "../interfaces/courses-service.interface";
+import { AddCourseDialogComponent } from '../components/add-course-dialog/add-course-dialog.component';
+import { ICoursesService } from '../interfaces/courses-service.interface';
 
 @Injectable()
 export class CoursesService implements ICoursesService {
@@ -10,7 +10,7 @@ export class CoursesService implements ICoursesService {
     private readonly matDialog: MatDialog,
   ) {}
 
-  public openAddCourseDialog(): void {
+  openAddCourseDialog(): void {
     const dialogRef = this.matDialog.open(AddCourseDialogComponent);
 
     dialogRef.afterClosed().subscribe(result => {

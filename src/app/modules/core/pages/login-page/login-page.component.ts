@@ -1,9 +1,9 @@
-import { ChangeDetectionStrategy, Component } from "@angular/core";
-import { Router } from "@angular/router";
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Router } from '@angular/router';
 
-import { SuccessUserLoginResponse } from "../../types/success-user-login-response.type";
+import { SuccessUserLoginResponse } from '../../types/success-user-login-response.type';
 
-import { LocalStorageKey, LocalStorageService } from "../../../../shared/services/local-storage.service";
+import { LocalStorageKey, LocalStorageService } from '../../../../shared/services/local-storage.service';
 
 @Component({
   selector: 'ac-login-page',
@@ -17,7 +17,7 @@ export class LoginPageComponent {
     private readonly router: Router,
   ) {}
 
-  public async handleUserSuccessLogin(successLoginResponse: SuccessUserLoginResponse): Promise<void> {
+  async handleUserSuccessLogin(successLoginResponse: SuccessUserLoginResponse): Promise<void> {
     this.localStorageService.save(
       LocalStorageKey.ACCESS_TOKEN,
       successLoginResponse.accessToken,

@@ -10,11 +10,11 @@ import { Course } from '../../types/course.type';
 })
 export class CourseCardComponent implements OnInit {
   @Input()
-  public course!: Course;
+  course?: Course;
 
-  public ngOnInit(): void {
+  ngOnInit(): void {
     if (this.course === undefined) {
-      throw new Error("Course is not defined!");
+      throw new Error('Course is not defined!');
     }
   }
 }

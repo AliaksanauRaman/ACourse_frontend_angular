@@ -9,12 +9,12 @@ import { HttpRequestsInterceptor } from './modules/core/interceptors/http-reques
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { API_URL } from "./shared/injection-tokens/api-url";
-import { environment } from "../environments/environment";
+import { API_URL } from './shared/injection-tokens/api-url';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,6 +34,6 @@ import { environment } from "../environments/environment";
       multi: true,
     },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

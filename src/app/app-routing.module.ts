@@ -16,12 +16,12 @@ const appChildRoutes: Routes = [
   {
     path: 'courses',
     canActivate: [IsUserAuthenticatedGuard],
-    loadChildren: () => import('./modules/courses/courses.module').then(m => m.CoursesModule),
+    loadChildren: async () => import('./modules/courses/courses.module').then(m => m.CoursesModule),
   },
   {
     path: 'settings',
-    loadChildren: () => import('./modules/settings/settings.module').then(m => m.SettingsModule),
-  }
+    loadChildren: async () => import('./modules/settings/settings.module').then(m => m.SettingsModule),
+  },
 ];
 
 const appRoutes: Routes = [
@@ -39,6 +39,6 @@ const appRoutes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(appRoutes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class AppRoutingModule { }

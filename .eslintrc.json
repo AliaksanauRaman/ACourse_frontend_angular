@@ -1,24 +1,310 @@
 {
   "root": true,
-  "ignorePatterns": [
-    "projects/**/*"
-  ],
+  "ignorePatterns": [],
+  "rules": {
+    "@typescript-eslint/explicit-function-return-type": "off"
+  },
   "overrides": [
     {
-      "files": [
-        "*.ts"
-      ],
+      "files": ["*.ts"],
       "parserOptions": {
-        "project": [
-          "tsconfig.json"
-        ],
+        "project": ["tsconfig.json"],
         "createDefaultProgram": true
       },
-      "extends": [
-        "plugin:@angular-eslint/recommended",
-        "plugin:@angular-eslint/template/process-inline-templates"
-      ],
+      "plugins": ["rxjs", "unused-imports"],
+      "extends": ["plugin:@angular-eslint/recommended", "plugin:@angular-eslint/template/process-inline-templates"],
       "rules": {
+        "brace-style": "off",
+        "comma-dangle": "off",
+        "comma-spacing": "off",
+        "default-param-last": "off",
+        "func-call-spacing": "off",
+        "keyword-spacing": "off",
+        "no-array-constructor": "off",
+        "no-duplicate-imports": "off",
+        "no-empty-function": "off",
+        "no-extra-semi": "off",
+        "no-implied-eval": "off",
+        "no-magic-numbers": "off",
+        "no-shadow": "off",
+        "no-throw-literal": "off",
+        "no-unused-expressions": "off",
+        "no-unused-vars": "off",
+        "no-useless-constructor": "off",
+        "object-curly-spacing": "off",
+        "quotes": "off",
+        "require-await": "off",
+        "no-return-await": "off",
+        "semi": "off",
+        "space-before-blocks": "off",
+        "space-before-function-paren": "off",
+        "space-infix-ops": "off",
+        "no-var": "error",
+        "prefer-const": "error",
+        "prefer-arrow-callback": "error",
+        "prefer-destructuring": "warn",
+        "object-shorthand": "error",
+        "one-var": ["error", "never"],
+        "no-else-return": "error",
+        "arrow-spacing": [
+          "warn",
+          {
+            "before": true,
+            "after": true
+          }
+        ],
+        "switch-colon-spacing": [
+          "warn",
+          {
+            "after": true,
+            "before": false
+          }
+        ],
+
+        "@typescript-eslint/explicit-function-return-type": ["error"],
+        "@typescript-eslint/brace-style": "error",
+        "@typescript-eslint/comma-dangle": ["error", "always-multiline"],
+        "@typescript-eslint/comma-spacing": ["error"],
+        "@typescript-eslint/default-param-last": ["error"],
+        "@typescript-eslint/func-call-spacing": ["error"],
+        "@typescript-eslint/keyword-spacing": ["error"],
+        "@typescript-eslint/no-array-constructor": ["error"],
+        "@typescript-eslint/no-duplicate-imports": ["error"],
+        "@typescript-eslint/no-empty-function": ["error"],
+        "@typescript-eslint/no-extra-semi": ["error"],
+        "@typescript-eslint/no-implied-eval": ["error"],
+        "@typescript-eslint/no-shadow": ["error"],
+        "@typescript-eslint/no-throw-literal": ["error"],
+        "@typescript-eslint/no-unused-expressions": ["error"],
+        "@typescript-eslint/no-useless-constructor": ["error"],
+        "@typescript-eslint/object-curly-spacing": ["error", "always"],
+        "@typescript-eslint/quotes": [
+          "error",
+          "single",
+          {
+            "avoidEscape": true,
+            "allowTemplateLiterals": true
+          }
+        ],
+        "@typescript-eslint/require-await": ["error"],
+        "@typescript-eslint/return-await": ["error", "in-try-catch"],
+        "@typescript-eslint/semi": ["error", "always"],
+        "@typescript-eslint/space-before-blocks": ["error"],
+        "@typescript-eslint/space-before-function-paren": [
+          "error",
+          {
+            "anonymous": "never",
+            "named": "never",
+            "asyncArrow": "always"
+          }
+        ],
+        "@typescript-eslint/space-infix-ops": ["error"],
+        "@typescript-eslint/no-magic-numbers": [
+          "error",
+          {
+            "ignoreArrayIndexes": true,
+            "ignoreEnums": true,
+            "ignoreReadonlyClassProperties": true
+          }
+        ],
+        "@typescript-eslint/naming-convention": [
+          "error",
+          {
+            "selector": "variableLike",
+            "format": ["camelCase"]
+          },
+          {
+            "selector": "parameter",
+            "format": ["camelCase"],
+            "leadingUnderscore": "allow"
+          },
+          {
+            "selector": "variable",
+            "format": ["UPPER_CASE"],
+            "types": ["boolean", "string", "number"],
+            "modifiers": ["global"]
+          },
+          {
+            "selector": "typeLike",
+            "format": ["PascalCase"]
+          },
+          {
+            "selector": "interface",
+            "format": ["PascalCase"],
+            "custom": {
+              "regex": "^I[A-Z]",
+              "match": true
+            }
+          },
+          {
+            "selector": "enumMember",
+            "format": ["UPPER_CASE"]
+          }
+        ],
+        "@typescript-eslint/explicit-member-accessibility": [
+          "error",
+          {
+            "accessibility": "no-public"
+          }
+        ],
+        "@typescript-eslint/member-ordering": [
+          "error",
+          {
+            "default": [
+              "public-static-field",
+              "public-static-set",
+              "public-static-get",
+              "public-decorated-field",
+              "public-decorated-set",
+              "public-decorated-get",
+              "public-instance-field",
+              "public-instance-set",
+              "public-instance-get",
+              "public-abstract-field",
+              "public-abstract-set",
+              "public-abstract-get",
+
+              "protected-static-field",
+              "protected-static-set",
+              "protected-static-get",
+              "protected-decorated-field",
+              "protected-decorated-set",
+              "protected-decorated-get",
+              "protected-instance-field",
+              "protected-instance-set",
+              "protected-instance-get",
+              "protected-abstract-field",
+              "protected-abstract-set",
+              "protected-abstract-get",
+
+              "private-static-field",
+              "private-static-set",
+              "private-static-get",
+              "private-decorated-field",
+              "private-decorated-set",
+              "private-decorated-get",
+              "private-instance-field",
+              "private-instance-set",
+              "private-instance-get",
+              "private-abstract-field",
+              "private-abstract-set",
+              "private-abstract-get",
+
+              "public-constructor",
+              "protected-constructor",
+              "private-constructor",
+
+              "public-static-method",
+              "public-decorated-method",
+              "public-instance-method",
+              "public-abstract-method",
+
+              "protected-static-method",
+              "protected-decorated-method",
+              "protected-instance-method",
+              "protected-abstract-method",
+
+              "private-static-method",
+              "private-decorated-method",
+              "private-instance-method",
+              "private-abstract-method"
+            ]
+          }
+        ],
+        "@typescript-eslint/no-explicit-any": "error",
+        "@typescript-eslint/prefer-as-const": "error",
+        "@typescript-eslint/prefer-readonly": "error",
+        "@typescript-eslint/no-unused-vars": "off",
+        "@typescript-eslint/array-type": [
+          "warn",
+          {
+            "default": "generic",
+            "readonly": "generic"
+          }
+        ],
+        "@typescript-eslint/consistent-indexed-object-style": [
+          "warn",
+          "record"
+        ],
+        "@typescript-eslint/consistent-type-assertions": [
+          "warn",
+          {
+            "assertionStyle": "never"
+          }
+        ],
+        "@typescript-eslint/ban-types": "error",
+        "@typescript-eslint/no-confusing-void-expression": [
+          "warn",
+          {
+            "ignoreArrowShorthand": true
+          }
+        ],
+        "@typescript-eslint/no-empty-interface": [
+          "warn",
+          {
+            "allowSingleExtends": false
+          }
+        ],
+        "@typescript-eslint/no-extra-non-null-assertion": "error",
+        "@typescript-eslint/no-floating-promises": "error",
+        "@typescript-eslint/no-inferrable-types": "error",
+        "@typescript-eslint/no-invalid-void-type": "error",
+        "@typescript-eslint/no-misused-new": "error",
+        "@typescript-eslint/no-redundant-type-constituents": "error",
+        "@typescript-eslint/no-unnecessary-boolean-literal-compare": "error",
+        "@typescript-eslint/no-unnecessary-condition": "error",
+        "@typescript-eslint/no-unnecessary-type-assertion": "error",
+        "@typescript-eslint/no-unsafe-assignment": "error",
+        "@typescript-eslint/no-unsafe-call": "error",
+        "@typescript-eslint/no-unsafe-return": "error",
+        "@typescript-eslint/no-useless-empty-export": "error",
+        "@typescript-eslint/prefer-enum-initializers": "warn",
+        "@typescript-eslint/prefer-literal-enum-member": "warn",
+        "@typescript-eslint/prefer-for-of": "warn",
+        "@typescript-eslint/prefer-includes": "warn",
+        "@typescript-eslint/prefer-nullish-coalescing": "warn",
+        "@typescript-eslint/prefer-optional-chain": "warn",
+        "@typescript-eslint/prefer-reduce-type-parameter": "warn",
+        "@typescript-eslint/prefer-regexp-exec": "warn",
+        "@typescript-eslint/prefer-return-this-type": "warn",
+        "@typescript-eslint/prefer-string-starts-ends-with": "warn",
+        "@typescript-eslint/prefer-ts-expect-error": "error",
+        "@typescript-eslint/promise-function-async": "error",
+        "@typescript-eslint/restrict-plus-operands": "warn",
+        "@typescript-eslint/restrict-template-expressions": [
+          "error",
+          {
+            "allowNumber": true,
+            "allowBoolean": true,
+            "allowNullish": true
+          }
+        ],
+        "@typescript-eslint/strict-boolean-expressions": [
+          "error",
+          {
+            "allowString": false,
+            "allowNumber": false,
+            "allowNullableObject": false,
+            "allowNullableBoolean": false,
+            "allowNullableString": false,
+            "allowNullableNumber": false,
+            "allowAny": false,
+            "allowRuleToRunWithoutStrictNullChecksIKnowWhatIAmDoing": false
+          }
+        ],
+        "@typescript-eslint/switch-exhaustiveness-check": ["error"],
+        "@typescript-eslint/type-annotation-spacing": ["error"],
+        "@typescript-eslint/unbound-method": [
+          "error",
+          {
+            "ignoreStatic": true
+          }
+        ],
+
+        "@angular-eslint/prefer-on-push-component-change-detection": "error",
+        "@angular-eslint/no-host-metadata-property": "error",
+        "@angular-eslint/no-inputs-metadata-property": "error",
+        "@angular-eslint/no-outputs-metadata-property": "error",
         "@angular-eslint/directive-selector": [
           "error",
           {
@@ -34,16 +320,26 @@
             "prefix": "ac",
             "style": "kebab-case"
           }
+        ],
+
+        "unused-imports/no-unused-imports": "error",
+        "unused-imports/no-unused-vars": [
+          "error",
+          { "vars": "all", "varsIgnorePattern": "^_", "args": "after-used", "argsIgnorePattern": "^_" }
+        ],
+
+        "rxjs/finnish": [
+          "error",
+          {
+            "function": false,
+            "methods": false
+          }
         ]
       }
     },
     {
-      "files": [
-        "*.html"
-      ],
-      "extends": [
-        "plugin:@angular-eslint/template/recommended"
-      ],
+      "files": ["*.html"],
+      "extends": ["plugin:@angular-eslint/template/recommended"],
       "rules": {}
     }
   ]

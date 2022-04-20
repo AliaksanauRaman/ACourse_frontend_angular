@@ -1,22 +1,30 @@
 import { By } from '@angular/platform-browser';
-import { Component, DebugElement } from '@angular/core';
+import { Component, DebugElement, ChangeDetectionStrategy } from '@angular/core';
 import { TestBed, ComponentFixture } from '@angular/core/testing';
 
-import { TextColorDirective } from "./text-color.directive";
+import { TextColorDirective } from './text-color.directive';
+
+const ELEMENTS_WITH_DIRECTIVES_COUNT = 3;
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <h1>Ordinary heading</h1>
     <h1 acTextColor="red">Red heading</h1>
     <h1 acTextColor>Grey heading</h1>
-    <input #inputRef [acTextColor]="inputRef.value" value="cyan"/>
+    <input #inputRef [acTextColor]="inputValue" [value]="inputValue" (input)="handleInput(inputRef.value)"/>
   `,
 })
-class TestComponent {}
+class TestComponent {
+  inputValue = 'cyan';
 
-describe("Shared: text-color directive", () => {
+  handleInput(newValue: string): void {
+    this.inputValue = newValue;
+  }
+}
+
+describe('Shared: text-color directive', () => {
   let elementsWithDirectives: Array<DebugElement>;
-  let noDirectiveElement: DebugElement;
   let fixture: ComponentFixture<TestComponent>;
 
   beforeEach(() => {
@@ -29,35 +37,46 @@ describe("Shared: text-color directive", () => {
     fixture.detectChanges();
 
     elementsWithDirectives = fixture.debugElement.queryAll(By.directive(TextColorDirective));
-    noDirectiveElement = fixture.debugElement.query(By.css("h1:not([acTextColor])"));
   });
 
-  it("should have three elements with directive", () => {
-    expect(elementsWithDirectives.length).toBe(3);
+  it('should have three elements with directive', () => {
+    expect(elementsWithDirectives.length).toBe(ELEMENTS_WITH_DIRECTIVES_COUNT);
   });
 
-  it("should color first heading text in red", () => {
-    const color = elementsWithDirectives[0].nativeElement.style.color;
-    
-    expect(color).toBe("red");
+  it('should color first heading text in red', () => {
+    const hostElement: unknown = elementsWithDirectives[0].nativeElement;
+
+    if (!(hostElement instanceof HTMLElement)) {
+      throw new Error('An HTMLElement expected!');
+    }
+
+    expect(hostElement.style.color).toBe('red');
   });
 
-  it("should color second heading text in default color (grey)", () => {
-    const color = elementsWithDirectives[1].nativeElement.style.color;
-    
-    expect(color).toBe("grey");
+  it('should color second heading text in default color (grey)', () => {
+    const hostElement: unknown = elementsWithDirectives[1].nativeElement;
+
+    if (!(hostElement instanceof HTMLElement)) {
+      throw new Error('An HTMLElement expected!');
+    }
+
+    expect(hostElement.style.color).toBe('grey');
   });
 
-  it("should color input text according to its current value", () => {
-    const inputElement: HTMLInputElement = elementsWithDirectives[2].nativeElement;
-    
-    expect(inputElement.style.color).toBe("cyan");
+  it('should color input text according to its current value', () => {
+    const hostElement: unknown = elementsWithDirectives[2].nativeElement;
 
-    inputElement.value = "green";
-    inputElement.dispatchEvent(new Event("input"));
+    if (!(hostElement instanceof HTMLInputElement)) {
+      throw new Error('An HTMLElement expected!');
+    }
+
+    expect(hostElement.style.color).toBe('cyan');
+
+    hostElement.value = 'green';
+    hostElement.dispatchEvent(new Event('input'));
 
     fixture.detectChanges();
 
-    expect(inputElement.style.color).toBe("green");
+    expect(hostElement.style.color).toBe('green');
   });
 });

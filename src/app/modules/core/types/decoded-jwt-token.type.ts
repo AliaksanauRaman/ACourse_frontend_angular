@@ -1,6 +1,6 @@
-import { isObject } from "../../../shared/utils/is-object.util";
-import { isNumber } from "../../../shared/utils/is-number.util";
-import { isString } from "../../../shared/utils/is-string.util";
+import { isObject } from '../../../shared/utils/is-object.util';
+import { isNumber } from '../../../shared/utils/is-number.util';
+import { isString } from '../../../shared/utils/is-string.util';
 
 export type DecodedJwtToken = Readonly<{
   /**
@@ -24,7 +24,7 @@ export type DecodedJwtToken = Readonly<{
    */
   exp: number;
   /**
-   * Date of JWT creation in secconds.
+   * Date of JWT creation in seconds.
    */
   iat?: number;
 }>;
@@ -37,4 +37,4 @@ export const isDecodedJwtToken = (value: unknown): value is DecodedJwtToken => {
          && isString(value['lastName'])
          && isNumber(value['exp'])
          && (isNumber(value['iat']) || value['iat'] === undefined);
-}
+};

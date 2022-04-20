@@ -28,9 +28,10 @@ export class CoursePageComponent {
     const activatedRouteUrlParams = this.activatedRoute.snapshot.params;
 
     if (typeof activatedRouteUrlParams['courseId'] !== 'string') {
-      throw new Error("'courseId' url parameter is missing!");
+      throw new Error('\'courseId\' url parameter is missing!');
     }
 
+    // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
     return activatedRouteUrlParams as UrlParams;
   }
 }

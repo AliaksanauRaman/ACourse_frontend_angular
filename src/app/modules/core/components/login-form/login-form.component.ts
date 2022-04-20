@@ -1,9 +1,12 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output } from "@angular/core";
-import { FormBuilder, Validators } from "@angular/forms";
-import { map, takeUntil, tap } from "rxjs";
+import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
+import { map, takeUntil, tap } from 'rxjs';
 
-import { AutoDestroy } from "../../../../shared/classes/auto-destroy.class";
-import { LoginFormValue } from "../../types/login-form-value.type";
+import { AutoDestroy } from '../../../../shared/classes/auto-destroy.class';
+import { LoginFormValue } from '../../types/login-form-value.type';
+
+const EMAIL_MAX_LENGTH = 70;
+const PASSWORD_MAX_LENGTH = 50;
 
 @Component({
   selector: 'ac-login-form',
@@ -13,14 +16,14 @@ import { LoginFormValue } from "../../types/login-form-value.type";
 })
 export class LoginFormComponent extends AutoDestroy implements OnInit {
   @Output()
-  public readonly valueChange = new EventEmitter<LoginFormValue>();
+  readonly valueChange = new EventEmitter<LoginFormValue>();
 
   @Output()
-  public readonly validityChange = new EventEmitter<boolean>();
+  readonly validityChange = new EventEmitter<boolean>();
 
-  public loginForm = this.formBuilder.group({
-    email: ['', [Validators.required, Validators.email, Validators.maxLength(70)]],
-    password: ['', [Validators.required, Validators.maxLength(50)]],
+  loginForm = this.formBuilder.group({
+    email: ['', [Validators.required, Validators.email, Validators.maxLength(EMAIL_MAX_LENGTH)]],
+    password: ['', [Validators.required, Validators.maxLength(PASSWORD_MAX_LENGTH)]],
   });
 
   constructor(
@@ -29,7 +32,7 @@ export class LoginFormComponent extends AutoDestroy implements OnInit {
     super();
   }
 
-  public ngOnInit(): void {
+  ngOnInit(): void {
     this.subToLoginFormValueChanges();
     this.subToLoginFormValidityChanges();
   }
